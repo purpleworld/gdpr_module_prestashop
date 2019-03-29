@@ -1,7 +1,7 @@
 <?php
 
-require_once(dirname(__FILE__).'/classes/GDPR_Agreement_Model.php');
-require_once(dirname(__FILE__).'/classes/GDPR_Data_File_Model.php');
+require_once(__DIR__ . '/classes/GDPRAgreement.php');
+require_once(__DIR__ . '/classes/GDPRDataFile.php');
 
 class GDPR extends Module
 {
@@ -28,14 +28,18 @@ class GDPR extends Module
     }
 
 
-    public function install()
-    {
-        return parent::install()
+    public function install(){
+        return (
+            parent::install()
             && $this->_initDefaultConfigurationValues()
             && $this->installSQL()
             && $this->installTab('DEFAULT', 'AdminGDPR', 'GDPR')
             && $this->installTab('AdminGDPR', 'AdminGDPRAgreement', 'Agreements')
-            && $this->installTab('AdminGDPR', 'AdminGDPRDataFile', 'Data Files');
+            && $this->installTab('AdminGDPR', 'AdminGDPRDataFile', 'Data Files')
+            && $this->registerHook('displayBackOfficeHeader')
+            && $this->registerHook('customerAccount')
+            && $this->installDefaultSQL()
+        );
     }
 
     private function _initDefaultConfigurationValues()
@@ -82,11 +86,15 @@ class GDPR extends Module
         return true;
     }
 
-    private function installTab($parent, $class_name, $name){
+    private function installDefaultSQL(){
+        GDPRDataFile::defaultSQL();
+    }
+
+    private function installTab($parent, $class_name, $name) {
         $tab = new Tab();
         $tab->id_parent = (int)Tab::getIdFromClassName($parent);
         $tab->name = array();
-        foreach(Language::getLanguages(true) as $lang){
+        foreach (Language::getLanguages(true) as $lang) {
             $tab->name[$lang['id_lang']] = $name;
         }
         $tab->class_name = $class_name;
@@ -172,5 +180,11 @@ class GDPR extends Module
 
     }
 
+    public function  hookDisplayBackOfficeHeader(){
+        $this->context->controller->addCSS($this->_path.'css/tab.css');
+    }
+    public function hookCustomerAccount(){
+        return("aye");
+    }
 
 }

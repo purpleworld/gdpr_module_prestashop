@@ -6,7 +6,7 @@ class AdminGDPRDataFileController extends ModuleAdminController {
 
     public function __construct(){
         $this->table = 'admin_gdpr_data_file';
-        $this->className = 'AdminGDPRAgreement';
+        $this->className = 'GDPRDataFile';
         $this->fields_list = array(
             'id_admin_gdpr_data_file' => array('title' => $this->l('ID'), 'align' => 'center', 'width' => 25),
             'data_file_name' => array('title' => $this->l('Name'), 'width' => 140),
@@ -14,6 +14,12 @@ class AdminGDPRDataFileController extends ModuleAdminController {
         );
 
         parent::__construct();
+    }
+    public function renderList() {
+        $this->addRowAction('edit');
+        $this->addRowAction('delete');
+
+        return parent::renderList();
     }
 
 }

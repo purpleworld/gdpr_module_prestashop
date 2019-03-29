@@ -6,7 +6,7 @@ class AdminGDPRAgreementController extends ModuleAdminController {
 
     public function __construct(){
         $this->table = 'admin_gdpr_agreement';
-        $this->className = 'AdminGDPRAgreement';
+        $this->className = 'GDPRAgreement';
         $this->fields_list = array(
             'id_admin_gdpr_agreement' => array('title' => $this->l('ID'), 'align' => 'center', 'width' => 25),
             'ip' => array('title' => $this->l('IP'), 'width' => 25),
@@ -19,5 +19,4 @@ class AdminGDPRAgreementController extends ModuleAdminController {
 
         parent::__construct();
     }
-
 }
