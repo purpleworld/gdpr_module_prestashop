@@ -184,7 +184,7 @@ class GDPR extends Module
         $this->context->controller->addCSS($this->_path.'css/tab.css');
     }
     public function hookCustomerAccount(){
-        return("aye");
+        return($this->display(__FILE__, 'customerAccount.tpl'));
     }
 
 }
