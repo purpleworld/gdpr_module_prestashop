@@ -27,5 +27,6 @@ class GDPRDataFile extends ObjectModel {
         foreach($sqls as $sql){
             $db->execute($sql);
         }
+        return true;
     }
 }

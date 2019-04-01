@@ -38,7 +38,7 @@ class GDPR extends Module
             && $this->installTab('AdminGDPR', 'AdminGDPRDataFile', 'Data Files')
             && $this->registerHook('displayBackOfficeHeader')
             && $this->registerHook('customerAccount')
-            && $this->installDefaultSQL()
+            && GDPRDataFile::defaultSQL()
         );
     }
 
@@ -84,10 +84,6 @@ class GDPR extends Module
             $db->execute($sql);
         }
         return true;
-    }
-
-    private function installDefaultSQL(){
-        GDPRDataFile::defaultSQL();
     }
 
     private function installTab($parent, $class_name, $name) {
@@ -184,7 +180,11 @@ class GDPR extends Module
         $this->context->controller->addCSS($this->_path.'css/tab.css');
     }
     public function hookCustomerAccount(){
-        return($this->display(__FILE__, 'customerAccount.tpl'));
+        $link = new Link();
+        $my_link = $link->getModuleLink($this->name, 'DataFiles');
+
+        $this->context->smarty->assign('gdpr_link', $my_link);
+        return($this->display(__FILE__, 'CustomerAccount.tpl'));
     }
 
 }
