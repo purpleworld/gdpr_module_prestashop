@@ -1,1 +1,1 @@
-<li><a href="{$gdpr_link}" title="Data files"><i class="icon-file-o"></i><span>Account Data</span></a></li>
+<li><a href="{$gdpr_link}" title="Data files"><i class="icon-file-o"></i><span>Data Files</span></a></li>
