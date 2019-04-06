@@ -11,6 +11,9 @@ class GDPRAgreement extends ObjectModel {
         'primary' => 'id_admin_gdpr_agreement',
         'fields' => array(
             'id_admin_gdpr_agreement' => array('type' => self::TYPE_INT, 'validate' => 'isUnsignedId', 'required' => true),
+            'user_id' => array('type' => self::TYPE_STRING, 'validate' => 'isName'),
+            'data_file_id' => array('type' => self::TYPE_STRING, 'validate' => 'isName'),
+            'ip' => array('type' => self::TYPE_STRING, 'validate' => 'isName'),
             'email' => array('type' => self::TYPE_STRING, 'validate' => 'isEmail'),
             'firstname' => array('type' => self::TYPE_STRING, 'validate' => 'isName'),
             'lastname' => array('type' => self::TYPE_STRING, 'validate' => 'isName'),

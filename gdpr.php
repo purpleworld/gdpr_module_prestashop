@@ -63,9 +63,13 @@ class GDPR extends Module
         $sqls = [];
         $sqls[] = 'CREATE TABLE IF NOT EXISTS `'._DB_PREFIX_.'admin_gdpr_agreement`(
             `id_admin_gdpr_agreement` int(11) NOT NULL AUTO_INCREMENT,
+            `user_id` varchar(1024) NOT NULL,
+            `data_file_id` varchar(1024) NOT NULL,
+            `ip` varchar(1024) NOT NULL,
             `email` varchar(1024) NOT NULL,
             `firstname` varchar(1024) NOT NULL,
             `lastname` varchar(1024) NOT NULL,
+            `status` boolean NOT NULL,
             `date` datetime NOT NULL,
                 PRIMARY KEY (`id_admin_gdpr_agreement`)
         ) ENGINE=InnoDB DEFAULT CHARSET=latin1;';

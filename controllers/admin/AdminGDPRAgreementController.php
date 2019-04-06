@@ -9,6 +9,8 @@ class AdminGDPRAgreementController extends ModuleAdminController {
         $this->className = 'GDPRAgreement';
         $this->fields_list = array(
             'id_admin_gdpr_agreement' => array('title' => $this->l('ID'), 'align' => 'center', 'width' => 25),
+            'user_id' => array('title' => $this->l('User ID'), 'width' => 25),
+            'data_file_id' => array('title' => $this->l('Name'), 'width' => 140),
             'ip' => array('title' => $this->l('IP'), 'width' => 25),
             'email' => array('title' => $this->l('Email'), 'width' => 140),
             'firstname' => array('title' => $this->l('Firstname'), 'width' => 140),
@@ -18,5 +20,21 @@ class AdminGDPRAgreementController extends ModuleAdminController {
         );
 
         parent::__construct();
+    }
+
+    public function renderList() {
+        $parentList = parent::renderList();
+
+        $top = $this->context->smarty->fetch(_PS_MODULE_DIR_."gdpr/views/templates/admin/csv.tpl");
+
+        return($parentList.$top);
+
+
+    }
+
+    public function initToolbar(){
+        parent::initToolbar();
+
+        unset($this->toolbar_btn['new']);
     }
 }
