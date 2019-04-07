@@ -1,1 +1,2 @@
-<li><a href="{$gdpr_link}" title="Data files"><i class="icon-file-o"></i><span>Data Files</span></a></li>
+<li><a href="{$dataFiles}" title="Data files"><i class="icon-file-o"></i><span>Data Files</span></a></li>
+<li><a href="{$accountData}" title="Data files"><i class="icon-user"></i><span>Account Data</span></a></li>

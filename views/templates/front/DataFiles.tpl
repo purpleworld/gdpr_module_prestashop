@@ -17,5 +17,5 @@
     </form>
 </div>
 <ul class="footer_links clearfix">
-    <li><a class="btn btn-default button button-small" href="#"><span>View Account Data</span></a></li>
+    <li><a class="btn btn-default button button-small" href="{$link->getModuleLink('gdpr', 'AccountData')}"><span>View Account Data</span></a></li>
 </ul>

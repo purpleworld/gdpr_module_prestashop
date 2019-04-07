@@ -185,9 +185,13 @@ class GDPR extends Module
     }
     public function hookCustomerAccount(){
         $link = new Link();
-        $my_link = $link->getModuleLink($this->name, 'DataFiles');
+        $linkDataFiles = $link->getModuleLink($this->name, 'DataFiles');
+        $linkAccountData = $link->getModuleLink($this->name, 'AccountData');
 
-        $this->context->smarty->assign('gdpr_link', $my_link);
+        $this->context->smarty->assign([
+            'dataFiles' => $linkDataFiles,
+            'accountData' => $linkAccountData
+        ]);
         return($this->display(__FILE__, 'CustomerAccount.tpl'));
     }
 

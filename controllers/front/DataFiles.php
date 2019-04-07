@@ -35,21 +35,21 @@ class gdprDataFilesModuleFrontController extends ModuleFrontController{
     }
 
     public function postProcess() {
-                if (Tools::isSubmit('data-files-form')){
-                    $user_id = Context::getContext()->customer->id;
-                    $ip = $_SERVER['REMOTE_ADDR'];
-                    $email = Context::getContext()->customer->email;
-                    $firstname = Context::getContext()->customer->firstname;
-                    $lastname = Context::getContext()->customer->lastname;
+            if (Tools::isSubmit('data-files-form')){
+                $user_id = Context::getContext()->customer->id;
+                $ip = $_SERVER['REMOTE_ADDR'];
+                $email = Context::getContext()->customer->email;
+                $firstname = Context::getContext()->customer->firstname;
+                $lastname = Context::getContext()->customer->lastname;
 
-                foreach ($_POST as $key => $value){
-                    if ($key != 'data-files-form') {
-                        $sql = "INSERT INTO`" . _DB_PREFIX_ . "admin_gdpr_agreement`(`user_id`, `data_file_id`, `ip`, `email`, `firstname`, `lastname`, `status`, `date`)
-                                VALUES (".$user_id.", '".$key."', '".$ip."', '".$email."', '".$firstname."', '".$lastname."', ".$value.", NOW())";
-                        $db = DB::getInstance();
-                        $db->execute($sql);
-                    }
+            foreach ($_POST as $key => $value){
+                if ($key != 'data-files-form') {
+                    $sql = "INSERT INTO`" . _DB_PREFIX_ . "admin_gdpr_agreement`(`user_id`, `data_file_id`, `ip`, `email`, `firstname`, `lastname`, `status`, `date`)
+                            VALUES (".$user_id.", '".$key."', '".$ip."', '".$email."', '".$firstname."', '".$lastname."', ".$value.", NOW())";
+                    $db = DB::getInstance();
+                    $db->execute($sql);
                 }
+            }
         }
     }
 }
