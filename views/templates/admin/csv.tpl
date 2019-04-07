@@ -1,0 +1,1 @@
+<a href="{$link->getAdminLink('AdminGDPRAgreement')}&exportcsv=true" class="btn btn-success">Export in CSV</a>
