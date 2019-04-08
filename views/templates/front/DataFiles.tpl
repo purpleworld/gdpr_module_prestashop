@@ -1,3 +1,9 @@
+{capture name=path}
+    <a href="{$link->getPageLink('my-account', true)|escape:'html':'UTF-8'}">My account</a>
+    <span class="navigation-pipe">{$navigationPipe}</span>
+    <span class="navigation_page">Data Files</span>
+{/capture}
+
 <div class="box">
     <h1 class="page-subheading">Data files</h1>
     <form action="{$link->getModuleLink('gdpr', 'DataFiles')}" method="post">
@@ -17,5 +23,6 @@
     </form>
 </div>
 <ul class="footer_links clearfix">
+    <li><a class="btn btn-default button button-small" href="{$link->getPageLink('my-account', true)|escape:'html':'UTF-8'}"><span><i class="icon-chevron-left"></i>Back to your account</span></a></li>
     <li><a class="btn btn-default button button-small" href="{$link->getModuleLink('gdpr', 'AccountData')}"><span>View Account Data</span></a></li>
 </ul>

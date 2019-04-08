@@ -7,6 +7,15 @@ class gdprAccountDataModuleFrontController extends ModuleFrontController{
         parent::__construct();
     }
 
+    public function displayAddresses(){
+        $user_id = Context::getContext()->customer->id;
+        $sql = "SELECT COUNT(id_address)
+                FROM "._DB_PREFIX_."address
+                WHERE id_address = ".$user_id;
+
+        return Db::getInstance()->executeS($sql);
+    }
+
     public function displayVisits(){
         $user_id = Context::getContext()->customer->id;
 
@@ -37,11 +46,13 @@ class gdprAccountDataModuleFrontController extends ModuleFrontController{
         $abandonedCarts = $this->displayAbandonedCarts();
         $orders = $this->displayOrders();
         $visits = $this->displayVisits();
+        $addresses = $this->displayAddresses();
 
         $this->context->smarty->assign([
             'abandonedCarts' => $abandonedCarts[0]["COUNT(id_cart)"],
             'orders' => $orders[0]["COUNT(id_order)"],
-            'visits' => $visits[0]["COUNT(c.id_connections)"]
+            'visits' => $visits[0]["COUNT(c.id_connections)"],
+            'addresses' => $addresses[0]["COUNT(id_address)"]
         ]);
 
         $this->setTemplate('AccountData.tpl');
