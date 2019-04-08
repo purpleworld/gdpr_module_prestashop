@@ -12,10 +12,10 @@
                 <label>{$name['data_file_name']}</label>
                 <p>{$name['description']}</p>
                 <div class="radio">
-                    <label><input type="radio" name="{$name['id_admin_gdpr_data_file']}" {if isset($agreement) && $agreement[$name['id_admin_gdpr_data_file']] eq 1}checked="checked"{/if} value='1'>Allow</label>
+                    <label><input type="radio" name="{$name['id_admin_gdpr_data_file']}" {if isset($agreement[$name['id_admin_gdpr_data_file']]) && $agreement[$name['id_admin_gdpr_data_file']] eq 1}checked="checked"{/if} value='1'>Allow</label>
                 </div>
                 <div class="radio">
-                    <label><input type="radio" name="{$name['id_admin_gdpr_data_file']}" {if isset($agreement) && $agreement[$name['id_admin_gdpr_data_file']] eq 0}checked="checked"{/if} value='0'>Disallow</label>
+                    <label><input type="radio" name="{$name['id_admin_gdpr_data_file']}" {if isset($agreement[$name['id_admin_gdpr_data_file']]) && $agreement[$name['id_admin_gdpr_data_file']] eq 0}checked="checked"{/if} value='0'>Disallow</label>
                 </div>
             </div>
         {/foreach}

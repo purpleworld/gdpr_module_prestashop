@@ -1,6 +1,6 @@
 <?php
 class GDPRAgreement extends ObjectModel {
-    public $id_admin_gpdr_agreement;
+    public $id_admin_gdpr_agreement;
     public $ip;
     public $firstname;
     public $lastname;
@@ -21,6 +21,4 @@ class GDPRAgreement extends ObjectModel {
             'date' => array('type' => self::TYPE_DATE, 'validate' => 'isDate'),
         )
     );
-
-
 }

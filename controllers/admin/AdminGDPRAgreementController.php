@@ -1,5 +1,6 @@
 <?php
-require_once('/data/clients/disii/2018-19/sjeremy/presta16/prestashop/modules/gdpr/classes/GDPRAgreement.php');
+require_once(_PS_MODULE_DIR_.'gdpr/classes/GDPRAgreement.php');
+require_once(_PS_MODULE_DIR_.'gdpr/helpers/CSVExport.php');
 
 class AdminGDPRAgreementController extends ModuleAdminController {
 
@@ -30,15 +31,12 @@ class AdminGDPRAgreementController extends ModuleAdminController {
         $parentList = parent::renderList();
         $linkBack = $this->context->link;
 
-
         $this->context->smarty->assign([
             'linkcsv' => $linkBack,
         ]);
         $top = $this->context->smarty->fetch(_PS_MODULE_DIR_."gdpr/views/templates/admin/csv.tpl");
 
         return($parentList.$top);
-
-
     }
 
     public function initToolbar(){
@@ -47,13 +45,10 @@ class AdminGDPRAgreementController extends ModuleAdminController {
     }
 
     public function exportCSV(){
-        $sql = "SELECT * FROM "._DB_PREFIX_."admin_gdpr_agreement";
-        $result = DB::getInstance()->executeS($sql);
-
         $detail = new PrestaShopCollection("GDPRAgreement");
-        $csv = new CSV($detail, 'data');
-
+        $csv = new CSVExport($detail, 'data');
         $csv->export();
+        die();
     }
 
 }

@@ -1,6 +1,6 @@
 <?php
 class GDPRDataFile extends ObjectModel {
-    public $id_admin_gpdr_data_file;
+    public $id_admin_gdpr_data_file;
     public $data_file_name;
     public $description;
 
