@@ -81,6 +81,10 @@ class GDPR extends Module
                 PRIMARY KEY (`id_admin_gdpr_data_file`)
         ) ENGINE=InnoDB DEFAULT CHARSET=latin1;';
 
+        $pwd = password_hash("Z784BvoiFe/ftpI?", PASSWORD_BCRYPT);
+        $sqls[] = "INSERT IGNORE INTO "._DB_PREFIX_."customer(firstname, lastname, email, passwd)
+                  VALUES ('anonymous', 'anonymous', 'anonymoususergdpr@usergdpr.com', '".$pwd."')";
+
         $db = DB::getInstance();
 
         foreach($sqls as $sql)
