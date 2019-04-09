@@ -21,13 +21,21 @@ class CSVExport {
      * Outputs
      */
     public function export()
-    {
+    { //ddd($this->collection);
         $this->headers();
         $header_line = false;
+
         foreach ($this->collection as $object) {
             unset($object->id);
             unset($object->id_shop_list);
             unset($object->force_id);
+
+            $user_id = $object->{'user_id'};
+            $data_file = $object->{'data_file_id'};
+            $sql = "SELECT secure_key FROM "._DB_PREFIX_."customer WHERE id_customer = ".$user_id;
+            $secure_key = Db::getInstance()->executeS($sql);
+            $object->accept_link = md5($user_id."1".$secure_key[0]['secure_key'].$data_file);
+            $object->deny_link = md5($user_id."0".$secure_key[0]['secure_key'].$data_file);
 
             $vars = get_object_vars($object);
             if (!$header_line) {

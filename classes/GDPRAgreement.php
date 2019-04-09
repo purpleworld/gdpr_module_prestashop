@@ -1,7 +1,10 @@
 <?php
 class GDPRAgreement extends ObjectModel {
     public $id_admin_gdpr_agreement;
+    public $user_id;
+    public $data_file_id;
     public $ip;
+    public $email;
     public $firstname;
     public $lastname;
     public $date;
