@@ -43,7 +43,7 @@ class gdprDataFilesModuleFrontController extends ModuleFrontController{
 
             foreach ($_POST as $key => $value){
                 if ($key != 'data-files-form') {
-                    $sql = "INSERT INTO`" . _DB_PREFIX_ . "admin_gdpr_agreement`(`user_id`, `data_file_id`, `ip`, `email`, `firstname`, `lastname`, `status`, `date`)
+                    $sql = "INSERT INTO`"._DB_PREFIX_."admin_gdpr_agreement`(`user_id`, `data_file_id`, `ip`, `email`, `firstname`, `lastname`, `status`, `date`)
                             VALUES (".$user_id.", '".$key."', '".$ip."', '".$email."', '".$firstname."', '".$lastname."', ".$value.", NOW())";
                     $db = DB::getInstance();
                     $db->execute($sql);

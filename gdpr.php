@@ -147,7 +147,7 @@ class GDPR extends Module
             'input' => [
                 [
                 'type' => 'text',
-                'label' => $this->l('Acceptance proof frequency'),
+                'label' => $this->l('Frequency'),
                 'name' => 'GDPR_FREQUENCY',
                 'required' => true
                 ]
@@ -160,12 +160,11 @@ class GDPR extends Module
 
         $helper = new HelperForm();
 
-        // Module, token and currentIndex
         $helper->module = $this;
 
         $helper->title = $this->displayName;
-        $helper->show_toolbar = true;        // false -> remove toolbar
-        $helper->toolbar_scroll = true;      // yes - > Toolbar is always visible on the top of the screen.
+        $helper->show_toolbar = true;
+        $helper->toolbar_scroll = true;
         $helper->submit_action = 'submit'.$this->name;
         $helper->toolbar_btn = [
             'save' => [
@@ -179,7 +178,6 @@ class GDPR extends Module
             ]
         ];
 
-        // Load current value
         foreach ($this->_default_values as $key => $default_value) {
             $helper->fields_value[$key] = Configuration::get($key);
         }

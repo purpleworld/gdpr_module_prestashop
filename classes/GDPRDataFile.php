@@ -6,10 +6,10 @@ class GDPRDataFile extends ObjectModel {
 
     public static $definition = array (
         'table' => 'admin_gdpr_data_file',
-        'primary' => 'id_admin_gpdr_data_file',
+        'primary' => 'id_admin_gdpr_data_file',
         'fields' => array(
-            'data_file_name' => array('type' => self::TYPE_STRING, 'validate' => 'isName'),
-            'description' => array('type' => self::TYPE_STRING, 'validate' => 'isDescription'),
+            'data_file_name' => array('type' => self::TYPE_STRING, 'validate' => 'isName', 'required'=> true),
+            'description' => array('type' => self::TYPE_STRING, 'validate' => 'isString'),
         )
     );
 
